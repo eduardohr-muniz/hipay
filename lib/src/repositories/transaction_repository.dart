@@ -40,6 +40,6 @@ class TransactionRepository extends ITransactionRepository {
 
   @override
   Future<void> reembolsarTransacao({required String transactionId}) async {
-    final result = await client.post('/v1/Transactions/$transactionId/refund');
+    await client.post('/v1/Transactions/$transactionId/refund');
   }
 }

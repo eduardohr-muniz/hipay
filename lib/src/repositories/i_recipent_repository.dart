@@ -2,7 +2,6 @@ import 'package:hipay/src/models/bank.dart';
 import 'package:hipay/src/models/receip_bank_account.dart';
 import 'package:hipay/src/models/recipient.dart';
 import 'package:hipay/src/models/transfer.dart';
-import 'package:hipay/src/repositories/requests/create_receipient_request.dart';
 import 'package:hipay/src/repositories/responses/balance_response.dart';
 import 'package:hipay/src/repositories/responses/create_recipient_response.dart';
 

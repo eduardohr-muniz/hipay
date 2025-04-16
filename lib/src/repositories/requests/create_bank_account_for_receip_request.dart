@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:hipay/src/models/bank.dart';
-
 class CreateBankAccountForReceipRequest {
   final String receipId;
   final String pixKey;

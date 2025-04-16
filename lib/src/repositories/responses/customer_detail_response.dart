@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:hipay/src/enums/document_type.dart';
-import 'package:hipay/src/models/document.dart';
 
 class CustomerDetailResponse {
   final int id;
