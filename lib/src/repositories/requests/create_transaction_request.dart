@@ -36,7 +36,7 @@ class CreateTransactionRequest {
     }
     if (paymentMethod == HipayPaymentMethod.pix) {
       data['pix'] = {
-        'expiresIn': expiresIn.toIso8601String(),
+        'expiresIn': expiresIn.toUtc().toIso8601String(),
       };
     }
     if (splits?.isNotEmpty ?? false) {

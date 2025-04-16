@@ -28,7 +28,7 @@ abstract interface class IRecipientRepository {
 
   Future<List<ReceipBankAccount>> listarContasBancariasRecebedor({required String receipId, required int pageNumber, required int pageSize});
 
-  Future<void> criarTransferenciaRecebedor({required String receipId, required double amount, required String bankAccountId, required String idempotencyKey, double? transferFee});
+  Future<String> criarTransferenciaRecebedor({required String receipId, required int amount, required String bankAccountId, required String idempotencyKey, double? transferFee});
 
   Future<List<Transfer>> listarTransferenciasRecebor({required String receipId, required int pageNumber, required int pageSize});
 

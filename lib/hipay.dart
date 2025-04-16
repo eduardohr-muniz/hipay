@@ -8,6 +8,10 @@ import 'package:hipay/src/repositories/i_recipent_repository.dart';
 import 'package:hipay/src/repositories/i_transaction_repository.dart';
 import 'package:hipay/src/repositories/recipient_repository.dart';
 import 'package:hipay/src/repositories/transaction_repository.dart';
+export 'src/enums/z_enums_export.dart';
+export 'src/models/z_models_export.dart';
+export 'src/repositories/requests/z_requests_export.dart';
+export 'src/repositories/responses/z_responses_export.dart';
 
 class Hipay {
   Hipay({required String apiKey, bool sandbox = false, bool enableLogs = false}) {

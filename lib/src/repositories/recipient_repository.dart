@@ -56,16 +56,15 @@ class RecipientRepository implements IRecipientRepository {
   }
 
   @override
-  Future<void> criarTransferenciaRecebedor({required String receipId, required double amount, required String bankAccountId, required String idempotencyKey, double? transferFee, String? captchaToken}) async {
+  Future<String> criarTransferenciaRecebedor({required String receipId, required int amount, required String bankAccountId, required String idempotencyKey, double? transferFee, String? captchaToken}) async {
     final request = await client.post('/v1/Recipients/$receipId/transfers', headers: {
       "Idempotency-Key": idempotencyKey
     }, data: {
-      amount: amount,
-      bankAccountId: bankAccountId,
-      transferFee: transferFee,
-      captchaToken: captchaToken
+      'amount': amount,
+      'bankAccountId': bankAccountId,
+      'transferFee': transferFee
     });
-    final data = request.data;
+    return request.data['id'];
   }
 
   @override
@@ -75,9 +74,9 @@ class RecipientRepository implements IRecipientRepository {
   }
 
   @override
-  Future<Transfer> detalharTransferenciaRecebedor({required String receipId, required String transferId}) {
-    // TODO: implement detalharTransferenciaRecebedor
-    throw UnimplementedError();
+  Future<Transfer> detalharTransferenciaRecebedor({required String receipId, required String transferId}) async {
+    final result = await client.get('/v1/Recipients/$receipId/transfers/$transferId');
+    return Transfer.fromMap(result.data);
   }
 
   @override

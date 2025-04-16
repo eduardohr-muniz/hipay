@@ -4,12 +4,12 @@ class HipaySplit {
   final bool chargeProcessingFee;
   final bool liable;
   final String recipientId;
-  final double amount;
+  final int amount;
   HipaySplit({
+    required this.amount,
     this.chargeProcessingFee = false,
     this.liable = false,
     this.recipientId = '',
-    this.amount = 0.0,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,7 +26,7 @@ class HipaySplit {
       chargeProcessingFee: map['chargeProcessingFee'] ?? false,
       liable: map['liable'] ?? false,
       recipientId: map['recipientId'] ?? '',
-      amount: map['amount']?.toDouble() ?? 0.0,
+      amount: map['amount']?.toInt() ?? 0,
     );
   }
 
