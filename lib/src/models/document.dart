@@ -1,11 +1,6 @@
 import 'dart:convert';
 
-enum DocumentType {
-  cpf,
-  cnpj;
-
-  static DocumentType fromMap(String type) => DocumentType.values.firstWhere((t) => t.name == type);
-}
+import 'package:hipay/src/enums/document_type.dart';
 
 class Document {
   final String number;

@@ -1,28 +1,46 @@
 library hipay;
 
+import 'package:dio/dio.dart';
+import 'package:hipay/src/client/clien_exports.dart';
 import 'package:hipay/src/repositories/customer_repository.dart';
 import 'package:hipay/src/repositories/i_customer_repository.dart';
-import 'package:hipay/src/models/customer.dart';
-import 'package:hipay/src/models/document.dart';
+import 'package:hipay/src/repositories/i_recipent_repository.dart';
+import 'package:hipay/src/repositories/i_transaction_repository.dart';
+import 'package:hipay/src/repositories/recipient_repository.dart';
+import 'package:hipay/src/repositories/transaction_repository.dart';
 
 class Hipay {
-  final String apiKey;
-  final bool sandbox;
-  final bool enableLogs;
+  Hipay({required String apiKey, bool sandbox = false, bool enableLogs = false}) {
+    String baseUrl = 'https://api.hipay.com.br';
+    if (sandbox) baseUrl = 'https://api-sandbox.hipay.com.br';
+    _client = ClientDio(
+      baseOptions: BaseOptions(
+        baseUrl: baseUrl,
+        headers: {
+          'X-API-KEY': apiKey
+        },
+      ),
+      enableLogs: enableLogs,
+    );
+  }
 
-  Hipay({required this.apiKey, this.sandbox = false, this.enableLogs = false});
+  late IClient _client;
 
-  late final ICustomerRepository? _customerRepository;
-
+  ICustomerRepository? _customerRepository;
   ICustomerRepository get customers {
-    _customerRepository ??= CustomerRepository();
+    _customerRepository ??= CustomerRepository(client: _client);
     return _customerRepository!;
   }
-}
 
-// teste de estrutura
-void main() {
-  final hipay = Hipay(apiKey: 'api_key');
+  IRecipientRepository? _recipientRepository;
+  IRecipientRepository get recipients {
+    _recipientRepository ??= RecipientRepository(client: _client);
+    return _recipientRepository!;
+  }
 
-  hipay.customers.criarCliente(Customer(name: 'edu', email: 'edu@gmail', document: Document(number: '123', type: DocumentType.cpf)));
+  ITransactionRepository? _transactionRepository;
+  ITransactionRepository get transactions {
+    _transactionRepository ??= TransactionRepository(client: _client);
+    return _transactionRepository!;
+  }
 }

@@ -6,7 +6,7 @@ class Customer {
   final String id;
   final String name;
   final String email;
-  final Document document;
+  final Document? document;
   Customer({
     this.id = '',
     required this.name,
@@ -18,7 +18,7 @@ class Customer {
     final result = {
       'name': name,
       'email': email,
-      'document': document.toMap(),
+      'document': document?.toMap(),
     };
     if (id.isNotEmpty) {
       result['id'] = id;
@@ -31,7 +31,7 @@ class Customer {
       id: map['id'] ?? '',
       name: map['name'] ?? '',
       email: map['email'] ?? '',
-      document: Document.fromMap(map['document']),
+      document: (map['document']['type'] != null) ? Document.fromMap(map['document']) : null,
     );
   }
 

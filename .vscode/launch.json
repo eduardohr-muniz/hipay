@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "hipay",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hipay (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hipay (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "Test (hipay)",
+            "type": "dart",
+            "cwd": "hipay",
+            "request": "launch",
+            "codeLens": {
+                "for": [
+                    "run-test",
+                    "run-test-file",
+                    "debug-test",
+                    "debug-test-file"
+                ],
+                "path": "hipay/test",
+                "title": "${debugType}"
+            },
+            "args": [
+                "--dart-define-from-file",
+                ".env"
+            ]
+        }
+    ]
+}
