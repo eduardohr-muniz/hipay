@@ -1,39 +1,47 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Hipay Payments
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+**A Pix payment platform with the lowest fees in the market.**
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+### 📄 [Documentation](https://hipay.readme.io)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+---
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## 🚀 Getting Started
 
 ```dart
-const like = 'sample';
+import 'package:hipay/hipay.dart';
+
+final hipay = Hipay(apiKey: apiKeySandBox, enableLogs: true, sandbox: true);
 ```
 
-## Additional information
+## 💳 Creating a Transaction
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+import 'package:hipay/hipay.dart';
+
+final hipay = Hipay(apiKey: apiKeySandBox, enableLogs: true, sandbox: true);
+
+final transaction = await hipay.transactions.createTransaction(
+  amount: 500,
+  paymentMethod: HipayPaymentMethod.pix,
+  description: 'Order 02',
+  expiresIn: DateTime.now().add(const Duration(hours: 2)),
+  customerId: 'cus_389b223dc7a042609e8ff2f5877a3a',
+  splits: [
+    HipaySplit(
+      amount: 450,
+      chargeProcessingFee: true,
+      liable: true,
+      recipientId: 're_aa7619f5ab68484c9a5c0399f4fd',
+    ),
+    HipaySplit(
+      amount: 50,
+      chargeProcessingFee: false,
+      liable: false,
+      recipientId: 're_ff58bfaa64d94b148aa3d3b4dcb74',
+    ),
+  ],
+);
+
+```
+Feel free to reach out if you need more examples or advanced usage!
