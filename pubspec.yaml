@@ -3,14 +3,12 @@ description: "A Flutter package for processing Pix payments with the lowest fees
 homepage: "https://github.com/eduardohr-muniz/hipay"
 repository: "https://github.com/eduardohr-muniz/hipay"
 issue_tracker: "https://github.com/eduardohr-muniz/hipay/issues"
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: ^3.5.3
 
 dependencies:
-  flutter:
-    sdk: flutter
   dio: ^5.7.0
   talker_dio_logger: ^4.6.14
   talker: ^4.6.14
